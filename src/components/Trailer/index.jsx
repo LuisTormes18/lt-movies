@@ -1,14 +1,9 @@
 import { useState, useEffect } from "react";
 import YouTube from "react-youtube";
-import Modal from "react-modal";
 
-const ModalTrailer = ({ videoId, modalIsOpen, setIsOpen }) => {
-  // useEffect(() => {
-  //   if (videoId || videoId === undefined) {
-  //     setIsOpen(true);
-  //   }
-  // }, [videoId]);
-
+const Trailer = ({ videoId }) => {
+  const [activeTrailer, setActiveTrailer] = useState({});
+  const [trailers, setTrailers] = useState([]);
   const opts = {
     height: "400",
     width: "100%",
@@ -16,48 +11,31 @@ const ModalTrailer = ({ videoId, modalIsOpen, setIsOpen }) => {
       autoplay: 1,
     },
   };
+  useEffect(() => {
+    async function fetchData() {
+      const api_key = import.meta.env.VITE_API_KEY;
 
-  const customStyles = {
-    content: {
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
-      padding: "0px",
-      backgroundColor: "#000",
-      border: "none",
-      width: "80%",
-    },
-  };
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
+      const resp = await instanceAxios.get(
+        `/movie/${videoId}/videos?api_key=${api_key}`
+      );
+      const active = resp.data.results.pop();
+      setActiveTrailer(active);
+      setTrailers(resp.data.results);
+    }
+    fetchData();
+  }, [videoId]);
 
   return (
-    <Modal
-      isOpen={modalIsOpen}
-      onRequestClose={closeModal}
-      ariaHideApp={false}
-      style={customStyles}
-      contentLabel="Container Modal"
-    >
-      {videoId === undefined && (
-        <div
-          style={{ color: "white", display: "flex", justifyContent: "center" }}
-        >
-          <h2> Not Trailer! </h2>
-        </div>
-      )}
-      {videoId && <YouTube videoId={videoId} opts={opts} />}
-    </Modal>
+    <div className="container">
+      <div className="trailer_active">
+        <YouTube videoId={activeTrailer?.key} opts={opts} />
+      </div>
+      <div className="trailers_container">
+        {trailers?.map((t) => (
+          <h2 key={t?.key}>{t?.key}</h2>
+        ))}
+      </div>
+    </div>
   );
 };
-
-export default ModalTrailer;
+export default Trailer;

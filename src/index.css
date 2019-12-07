@@ -19,6 +19,11 @@ code {
 html,
 body {
   background-color: #000;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  max-width: 100vw;
+  min-height: 100vh;
+
 }
 
 .btn-outline {
@@ -61,5 +66,5 @@ body {
   background-color: rgba(0, 0, 0, 0.9) !important;
 }
 
-.ReactModal__Overlay--after-open {
-}
+/* .ReactModal__Overlay--after-open {
+} */

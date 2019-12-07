@@ -4,18 +4,20 @@ p {
 }
 
 .movie-screen {
-  padding: 40px;
-
-  display: flex;
 
   min-height: 100vh;
   max-height: 100vh;
   overflow-y: hidden;
+  overflow-x: hidden;
+
+}
+.hero{
+  padding: 40px;
+  display: flex;
 
   background-size: cover;
   background-position: top center;
 }
-
 .poster {
   margin-right: 20px;
   height: 100vh;
@@ -61,3 +63,7 @@ img {
   color: #f1f1f1;
   font-weight: lighter;
 }
+
+
+/* Trailer youtube */
+
