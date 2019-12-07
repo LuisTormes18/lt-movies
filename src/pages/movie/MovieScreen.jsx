@@ -4,13 +4,14 @@ import { useParams } from "react-router-dom";
 import Rating from "../../components/rating/Rating";
 import ModalTrailer from "./../../components/Trailer";
 
+import { getVideoIdTrailer } from "./../../utils/getVideoIdTrailer";
 import instanceAxios from "./../../axios";
 
 import "./movie.css";
 
 const MovieScreen = () => {
   const [movie, setMovie] = useState(null);
-  const [urlTrailer, setUrlTrailer] = useState(null);
+  const [videoIdTrailer, setVideoIdTrailer] = useState(null);
 
   let { id } = useParams();
   const base_url = import.meta.env.VITE_IMG_URL;
@@ -26,18 +27,14 @@ const MovieScreen = () => {
       );
 
       setMovie(req.data);
-
-      console.log(req.data);
     }
 
     fetchData();
   }, [id]);
+
   const handleSeeTrailer = async () => {
-    const api_key = import.meta.env.VITE_API_KEY;
-    const req = await instanceAxios.get(
-      `/movie/${movie?.id}/videos?api_key=${api_key}`
-    );
-    setUrlTrailer(req.data.results[0].key);
+    const videoId = await getVideoIdTrailer(movie.id);
+    setVideoIdTrailer(videoId);
   };
 
   return (
@@ -48,7 +45,7 @@ const MovieScreen = () => {
       }}
     >
       {/*Load trailer*/}
-      {urlTrailer && <ModalTrailer urlTrailer={urlTrailer} />}
+      {videoIdTrailer && <ModalTrailer videoId={videoIdTrailer} />}
 
       <div className="poster">
         <img
@@ -67,7 +64,6 @@ const MovieScreen = () => {
 
       <div className="texts">
         <h1>{movie?.name || movie?.title}</h1>
-        {/*<p>{movie?.original_name || movie?.original_title}</p>*/}
 
         <Rating {...movie} />
 
@@ -83,14 +79,14 @@ const MovieScreen = () => {
 
         <div className="details">
           <p>
-            Genres:{" "}
+            Genres:
             {movie?.genres?.map((g) => (
               <span> {g.name}, </span>
             ))}
           </p>
 
           <p>
-            Production Companies:{" "}
+            Production Companies:
             {movie?.production_companies?.map((p_c) => (
               <span> {p_c.name}, </span>
             ))}

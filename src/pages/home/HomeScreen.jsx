@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import ModalTrailer from "./../../components/Trailer";
 
-import instanceAxios from "./../../axios";
+import { getVideoIdTrailer } from "./../../utils/getVideoIdTrailer";
 import requests from "./../../requests";
 
 const RowMovies = lazy(() => import("../../components/RowMovies"));
@@ -13,8 +13,10 @@ import "./home.css";
 const HomeScreen = () => {
   const [loading, setLoading] = useState(true);
   const [movie, setMovie] = useState(null);
-  const [urlTrailer, setUrlTrailer] = useState(null);
+  const [videoIdTrailer, setVideoIdTrailer] = useState(null);
+
   const navigate = useNavigate();
+
   useEffect(() => {
     async function fetchData() {
       const req = await instanceAxios.get(requests.fetchTrending);
@@ -32,16 +34,14 @@ const HomeScreen = () => {
   }, []);
 
   const handleSeeTrailer = async () => {
-    const api_key = import.meta.env.VITE_API_KEY;
-    const req = await instanceAxios.get(
-      `/movie/${movie?.id}/videos?api_key=${api_key}`
-    );
-    setUrlTrailer(req.data.results[0].key);
+    const videoId = await getVideoIdTrailer(movie.id);
+    setVideoIdTrailer(videoId);
   };
 
   return (
     <div className="home_screen">
-      {urlTrailer && <ModalTrailer urlTrailer={urlTrailer} />}
+      {videoIdTrailer && <ModalTrailer videoId={videoIdTrailer} />}
+
       <div
         className="home_screen__banner"
         style={{
