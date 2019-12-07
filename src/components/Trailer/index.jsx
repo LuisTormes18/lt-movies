@@ -2,7 +2,8 @@ import { useState } from "react";
 import YouTube from "react-youtube";
 import Modal from "react-modal";
 
-const ModalTrailer = ({ urlTrailer }) => {
+const ModalTrailer = ({ videoId }) => {
+  const [modalIsOpen, setIsOpen] = useState(true);
 
   const customStyles = {
     content: {
@@ -19,8 +20,6 @@ const ModalTrailer = ({ urlTrailer }) => {
     },
   };
 
-  const [modalIsOpen, setIsOpen] = useState(true);
-
   function openModal() {
     setIsOpen(true);
   }
@@ -29,6 +28,14 @@ const ModalTrailer = ({ urlTrailer }) => {
     setIsOpen(false);
   }
 
+  const opts = {
+    height: "400",
+    width: "100%",
+    playerVars: {
+      autoplay: 1,
+    },
+  };
+
   return (
     <Modal
       isOpen={modalIsOpen}
@@ -36,19 +43,10 @@ const ModalTrailer = ({ urlTrailer }) => {
       style={customStyles}
       contentLabel="Example Modal"
     >
-      {urlTrailer === "undefined" ? (
+      {videoId === "undefined" ? (
         <span> Not Trailer!! </span>
       ) : (
-        <YouTube
-          videoId={urlTrailer}
-          opts={{
-            height: "400",
-            width: "100%",
-            playerVars: {
-              autoplay: 1,
-            },
-          }}
-        />
+        <YouTube videoId={videoId} opts={opts} />
       )}
     </Modal>
   );

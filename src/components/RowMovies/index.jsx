@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import instanceAxios from "./../../axios";
 
+import instanceAxios from "./../../axios";
 import requests from "./../../requests";
 
 import "./index.css";
@@ -30,6 +30,7 @@ const RowMovies = ({ title, fetchUrl }) => {
 
     fetchData();
   }, [fetchUrl]);
+
   return (
     <div className="row">
       <h2 className="row-title">{title}</h2>
