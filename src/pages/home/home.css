@@ -1,0 +1,43 @@
+/* HomeScreen */
+.home_screen {
+  width: 100%;
+}
+.home_screen__banner {
+  /* background-color: blue; */
+  height: 400px;
+  background-position: top center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+/*.home-screen__banner:before{
+  content: "";
+  display:block;
+  height: 100%;
+  widows: 100%;
+  position: absolute;
+  top:0; 
+}*/
+.banner__text {
+  color: #f1f1f1;
+  padding: 100px;
+
+  width: 50%;
+}
+
+.banner__text p {
+  font-size: .7em;
+  display: block;
+  padding: 20px 0;
+}
+@media(max-width: 500px){
+  .banner__text {
+  color: #f1f1f1;
+  padding: 100px;
+
+  width: 80%;
+}
+}
+.movies_container {
+    padding: 40px 20px;
+  background-color: #1b1b1b;
+}
