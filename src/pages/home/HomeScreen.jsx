@@ -13,7 +13,7 @@ const HomeScreen = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const req = await instanceAxios.get(requests.fetchNetflixOriginals);
+      const req = await instanceAxios.get(requests.fetchTrending);
       setMovie(
         req.data.results[Math.floor(Math.random() * req.data.results.length - 1)]
       );
