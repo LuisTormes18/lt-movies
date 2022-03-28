@@ -1,54 +1,72 @@
-import { useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 
-import RowMovies from "../../components/RowMovies";
+import Loading from "../../components/Loading";
 
-import "./home.css";
-import Button from "./../../components/Button/index";
 
 import instanceAxios from "./../../axios";
 import requests from "./../../requests";
 
+const RowMovies =  lazy(() => import("../../components/RowMovies"));
+
+
+import "./home.css";
+
+
 const HomeScreen = () => {
+  const [loading, setLoading] = useState(true);
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
       const req = await instanceAxios.get(requests.fetchTrending);
+
       setMovie(
-        req.data.results[Math.floor(Math.random() * req.data.results.length - 1)]
+        req.data.results[
+          Math.floor(Math.random() * req.data.results.length - 1)
+        ]
       );
+
+      setLoading(false);
     }
 
     fetchData();
-    console.log(movie)
   }, []);
+
+  // if (loading) {
+  //   return <Loading />;
+  // }
 
   return (
     <div className="home_screen">
       <div
         className="home_screen__banner"
         style={{
-          backgroundImage: `linear-gradient(to right, #000, transparent 100%), url(https://image.tmdb.org/t/p/original/${movie?.backdrop_path})`
+          backgroundImage: `linear-gradient(to right, #000, transparent 100%), url(https://image.tmdb.org/t/p/original/${movie?.backdrop_path})`,
         }}
       >
         <div className="banner__text">
-          <h1>Movie Title</h1>
-          <div>start</div>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-            tempore architecto molestiae tenetur placeat quas numquam
-            perspiciatis consequuntur.
-          </p>
-          <Button type="primary"> Ver Trailer </Button>
+          <h1>{movie?.name || movie?.original_name }</h1>
+          <p>{movie?.overview}</p>
+          <button className="btn-outline"> Ver Trailer </button>
         </div>
       </div>
       <div className="movies_container">
-        <RowMovies
-          title={"Netflix Originals"}
-          fetchUrl={requests.fetchNetflixOriginals}
-        />
-        <RowMovies title={"Trending Now"} fetchUrl={requests.fetchTrending} />
-        <RowMovies title={"Action"} fetchUrl={requests.fetchActionMovies} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <RowMovies
+            title={"Netflix Originals"}
+            fetchUrl={requests.fetchNetflixOriginals}
+          />
+        </Suspense>
+
+       {
+       /* <Suspense fallback={<div>Loading...</div>}>
+          <RowMovies title={"Trending Now"} fetchUrl={requests.fetchTrending} />
+        </Suspense>*/
+      }
+
+        {/*
+        <RowMovies title={"Comedy"} fetchUrl={requests.fetchComedyMovies} />
+        <RowMovies title={"Action"} fetchUrl={requests.fetchActionMovies} />*/}
       </div>
     </div>
   );

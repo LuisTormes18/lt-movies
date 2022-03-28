@@ -1,6 +1,7 @@
 aside {
 
-  min-width: 75px;
+  /*min-width: 75px;*/
+  width: auto;
   color: #f1f1f1;
 
   text-align: center;
@@ -13,7 +14,8 @@ aside {
 }
 
 .menu {
-  position: fixed;
+  /*position: fixed;*/
+  /*background-color: yellow;*/
 
 }
 .menu .item {

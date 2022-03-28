@@ -24,8 +24,11 @@
   width: 50%;
 }
 
+.banner__text h1{
+font-size: 1.5em;
+}
 .banner__text p {
-  font-size: .7em;
+  font-size: .8em;
   display: block;
   padding: 20px 0;
 }
@@ -39,5 +42,5 @@
 }
 .movies_container {
     padding: 40px 20px;
-  background-color: #1b1b1b;
+  background-color: rgba(18,18,18,.7);
 }

@@ -10,7 +10,7 @@ const App = () => {
       <Layout>
         <Routes>
           <Route path="/" element={HomeScreen()} />
-          <Route path="/movie" element={MovieScreen()} />
+          <Route path="/movie/:id" element={MovieScreen()} />
         </Routes>
       </Layout>
     </BrowserRouter>
