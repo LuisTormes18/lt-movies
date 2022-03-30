@@ -1,17 +1,15 @@
 .layout {
   display: flex;
-   
+
   height: 100vh;
   overflow-y: hidden;
   overflow-x: hidden;
-
-
 }
 
-.container{
-	/*background-color: red;*/
+.container {
+  /*background-color: red;*/
 
-	overflow-y: scroll;
+  overflow-y: scroll;
 
-	width: 100%;
+  width: 100%;
 }

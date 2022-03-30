@@ -16,8 +16,7 @@ const Sidebar = () => {
             <FaHome size={size} color={color} />
           </Link>
         </div>
-        {
-        /*<div className="item">
+        {/*<div className="item">
           <Link to="/movies">
             <FaVideo size={size} color={color} />
           </Link>
@@ -27,8 +26,7 @@ const Sidebar = () => {
             <FaCameraRetro size={size} color={color} />
           </Link>
         </div>
-        */
-      }
+        */}
         <div className="item">
           <Link to="/">
             <FaSearch size={size} color={color} />

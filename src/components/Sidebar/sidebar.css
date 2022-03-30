@@ -1,5 +1,4 @@
 aside {
-
   /*min-width: 75px;*/
   width: auto;
   color: #f1f1f1;
@@ -16,7 +15,6 @@ aside {
 .menu {
   /*position: fixed;*/
   /*background-color: yellow;*/
-
 }
 .menu .item {
   padding: 20px;

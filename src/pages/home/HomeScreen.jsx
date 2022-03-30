@@ -2,15 +2,12 @@ import { Suspense, lazy, useEffect, useState } from "react";
 
 import Loading from "../../components/Loading";
 
-
 import instanceAxios from "./../../axios";
 import requests from "./../../requests";
 
-const RowMovies =  lazy(() => import("../../components/RowMovies"));
-
+const RowMovies = lazy(() => import("../../components/RowMovies"));
 
 import "./home.css";
-
 
 const HomeScreen = () => {
   const [loading, setLoading] = useState(true);
@@ -45,9 +42,13 @@ const HomeScreen = () => {
         }}
       >
         <div className="banner__text">
-          <h1>{movie?.name || movie?.original_name }</h1>
+          <h1>{movie?.name || movie?.title || movie?.original_name || movie?.original_title }</h1>
           <p>{movie?.overview}</p>
-          <button className="btn-outline"> Ver Trailer </button>
+          <div style={{display:"flex", justifyContent:"center", gap:"18px" }}>
+          <button className="btn-outline"> See Trailer </button>
+          <button className="btn "> See Deatils</button>
+
+          </div>
         </div>
       </div>
       <div className="movies_container">
@@ -58,11 +59,9 @@ const HomeScreen = () => {
           />
         </Suspense>
 
-       {
-       /* <Suspense fallback={<div>Loading...</div>}>
+        {/* <Suspense fallback={<div>Loading...</div>}>
           <RowMovies title={"Trending Now"} fetchUrl={requests.fetchTrending} />
-        </Suspense>*/
-      }
+        </Suspense>*/}
 
         {/*
         <RowMovies title={"Comedy"} fetchUrl={requests.fetchComedyMovies} />

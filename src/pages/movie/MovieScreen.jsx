@@ -6,32 +6,32 @@ import instanceAxios from "./../../axios";
 import "./movie.css";
 
 const MovieScreen = () => {
-	const api_key = "9708e26b3212dc53fa4084f8be9aaff6";
-	const { id } = useParams();
-	const p = useParams();
+  const api_key = "9708e26b3212dc53fa4084f8be9aaff6";
+  const { id } = useParams();
+  const p = useParams();
 
-	console.log(p);
-	console.log(window.history);
 
-	const [movie, setMovie] = useState(null);
+  const [movie, setMovie] = useState(null);
 
-	useEffect(() => {
-		async function fetchData() {
-			const req = await instanceAxios.get(
-				`/movie/${99966}?api_key=${api_key}`
-			);
+  useEffect(() => {
 
-			setMovie(req.data);
-		}
+  console.log(id, p);
+    
+    async function fetchData() {
+      const req = await instanceAxios.get(`/movie/${99966}?api_key=${api_key}`);
 
-		fetchData();
-	}, [id]);
+      setMovie(req.data);
+      console.log(req.data)
+    }
 
-	return (
-		<div>
-			<h1>{movie?.name}</h1>
-		</div>
-	);
+    fetchData();
+  }, [id]);
+
+  return (
+    <div>
+      <h1>{movie?.name || movie?.title }</h1>
+    </div>
+  );
 };
 
 export default MovieScreen;
