@@ -1,3 +1,19 @@
-* {
-  color: white;
+h1,p {
+  color: #f1f1f1;
+}
+
+.movie-screen{
+  padding: 40px;
+
+  display: flex;
+
+
+  min-height: 100vh;
+}
+
+.poster{
+  padding: 20px;
+}
+img{
+  max-width: 300px;
 }

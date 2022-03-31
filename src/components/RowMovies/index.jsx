@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { createSearchParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import instanceAxios from "./../../axios";
 
 import "./index.css";
@@ -7,15 +7,12 @@ import "./index.css";
 const RowMovies = ({ title, fetchUrl }) => {
   const navigate = useNavigate();
 
-  const base_url = "https://image.tmdb.org/t/p/original/";
+  const base_url = import.meta.env.VITE_IMG_URL;
 
   function handleClickPosterMovie({ id }) {
-    navigate({
-      pathname: "movie",
-      search: createSearchParams({
-        id,
-      }).toString(),
-    });
+
+    navigate(`/movie/${id}`);
+
   }
 
   const [movies, setMovies] = useState([]);

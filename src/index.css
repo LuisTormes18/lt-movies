@@ -32,11 +32,11 @@ body {
   cursor: pointer;
 }
 
-.btn-outline:hover {
+/*.btn-outline:hover {
   background-color: white;
 
   color: #000;
-}
+}*/
 
 .btn {
   border: 1px solid white;
@@ -48,11 +48,11 @@ body {
   color: #000;
 
 }
-.btn:hover {
+/*.btn:hover {
   background-color: #000;
 
   color: white;
-}
+}*/
 .overlay{
   background-color: rgba(0, 0, 0,.7);
   border: 1px solid rgba(0, 0, 0,.7);

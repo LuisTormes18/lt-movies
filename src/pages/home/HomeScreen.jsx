@@ -44,7 +44,7 @@ const HomeScreen = () => {
         <div className="banner__text">
           <h1>{movie?.name || movie?.title || movie?.original_name || movie?.original_title }</h1>
           <p>{movie?.overview}</p>
-          <div style={{display:"flex", justifyContent:"center", gap:"18px" }}>
+          <div style={{display:"flex", justifyContent:"start", gap:"18px" }}>
           <button className="btn-outline"> See Trailer </button>
           <button className="btn "> See Deatils</button>
 

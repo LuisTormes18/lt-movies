@@ -6,30 +6,44 @@ import instanceAxios from "./../../axios";
 import "./movie.css";
 
 const MovieScreen = () => {
-  const api_key = "9708e26b3212dc53fa4084f8be9aaff6";
-  const { id } = useParams();
-  const p = useParams();
-
 
   const [movie, setMovie] = useState(null);
 
-  useEffect(() => {
+  let { id } = useParams();
+  const base_url = import.meta.env.VITE_IMG_URL;
 
-  console.log(id, p);
+  useEffect(() => {
     
     async function fetchData() {
-      const req = await instanceAxios.get(`/movie/${99966}?api_key=${api_key}`);
+      const api_key = import.meta.env.VITE_API_KEY;
+
+
+      const req = await instanceAxios.get(`/tv/${id}?api_key=${api_key}`);
 
       setMovie(req.data);
-      console.log(req.data)
+      console.log(req.data);
     }
 
     fetchData();
+
   }, [id]);
 
   return (
-    <div>
-      <h1>{movie?.name || movie?.title }</h1>
+    <div className="movie-screen">
+
+      <div className="poster">
+
+        <img src={`${base_url}${movie?.poster_path}`} alt={movie?.name || movie?.title} />
+        <br />
+        <button type="button">See trailer...</button>
+      
+      </div> 
+
+      <div className="texts">
+        <h1>{ movie?.name || movie?.title }</h1>
+        <p>{ movie?.overview }</p>
+
+      </div>
     </div>
   );
 };
