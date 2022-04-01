@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import instanceAxios from "./../../axios";
 
+import requests from "./../../requests";
+
 import "./index.css";
 
 const RowMovies = ({ title, fetchUrl }) => {
@@ -10,9 +12,12 @@ const RowMovies = ({ title, fetchUrl }) => {
   const base_url = import.meta.env.VITE_IMG_URL;
 
   function handleClickPosterMovie({ id }) {
+    if (fetchUrl === requests.fetchNetflixOriginals) {
+      navigate(`/movie/tv-${id}`);
+      return;
+    }
 
-    navigate(`/movie/${id}`);
-
+    navigate(`/movie/movie-${id}`);
   }
 
   const [movies, setMovies] = useState([]);
