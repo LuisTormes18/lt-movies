@@ -75,11 +75,11 @@ const HomeScreen = () => {
         </div>
       </div>
       <div className="movies_container">
-        {/*<Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div>Loading...</div>}>
           <RowMovies title={"Trending Now"} fetchUrl={requests.fetchTrending} />
-        </Suspense>*/}
+        </Suspense>
 
-        {/*<Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div>Loading...</div>}>
           <RowMovies
             title={"Netflix Originals"}
             fetchUrl={requests.fetchNetflixOriginals}
@@ -90,7 +90,7 @@ const HomeScreen = () => {
         </Suspense>
         <Suspense fallback={<div>Loading...</div>}>
           <RowMovies title={"Action"} fetchUrl={requests.fetchActionMovies} />
-        </Suspense>*/}
+        </Suspense>
       </div>
     </div>
   );

@@ -10,7 +10,6 @@ export const getVideoIdTrailer = async (movieId) => {
 
     return req?.data?.results[0]?.key || undefined;
   } catch (err) {
-    
     return undefined;
   }
 };
