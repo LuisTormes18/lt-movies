@@ -1,9 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import YouTube from "react-youtube";
 import Modal from "react-modal";
 
-const ModalTrailer = ({ videoId }) => {
-  const [modalIsOpen, setIsOpen] = useState(true);
+const ModalTrailer = ({ videoId, setVideoIdTrailer }) => {
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (videoId || videoId === undefined) {
+      setIsOpen(true);
+    }
+  }, [videoId]);
+
+  const opts = {
+    height: "400",
+    width: "100%",
+    playerVars: {
+      autoplay: 1,
+    },
+  };
 
   const customStyles = {
     content: {
@@ -26,28 +40,25 @@ const ModalTrailer = ({ videoId }) => {
 
   function closeModal() {
     setIsOpen(false);
+    setVideoIdTrailer(null);
   }
-
-  const opts = {
-    height: "400",
-    width: "100%",
-    playerVars: {
-      autoplay: 1,
-    },
-  };
 
   return (
     <Modal
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
       style={customStyles}
-      contentLabel="Example Modal"
+      contentLabel="Container Modal"
     >
-      {videoId === "undefined" ? (
-        <span> Not Trailer!! </span>
-      ) : (
-        <YouTube videoId={videoId} opts={opts} />
+      {videoId === undefined && (
+        <div
+          style={{ color: "white", display: "flex", justifyContent: "center" }}
+        >
+          {" "}
+          <h2> Not Trailer! </h2>{" "}
+        </div>
       )}
+      {videoId && <YouTube videoId={videoId} opts={opts} />}
     </Modal>
   );
 };

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import ModalTrailer from "./../../components/Trailer";
 
 import { getVideoIdTrailer } from "./../../utils/getVideoIdTrailer";
+import instanceAxios from "./../../axios";
 import requests from "./../../requests";
 
 const RowMovies = lazy(() => import("../../components/RowMovies"));
@@ -11,10 +12,8 @@ const RowMovies = lazy(() => import("../../components/RowMovies"));
 import "./home.css";
 
 const HomeScreen = () => {
-  const [loading, setLoading] = useState(true);
   const [movie, setMovie] = useState(null);
   const [videoIdTrailer, setVideoIdTrailer] = useState(null);
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,8 +25,6 @@ const HomeScreen = () => {
           Math.floor(Math.random() * req.data.results.length - 1)
         ]
       );
-
-      setLoading(false);
     }
 
     fetchData();
@@ -35,12 +32,16 @@ const HomeScreen = () => {
 
   const handleSeeTrailer = async () => {
     const videoId = await getVideoIdTrailer(movie.id);
+
     setVideoIdTrailer(videoId);
   };
 
   return (
     <div className="home_screen">
-      {videoIdTrailer && <ModalTrailer videoId={videoIdTrailer} />}
+      <ModalTrailer
+        videoId={videoIdTrailer}
+        setVideoIdTrailer={setVideoIdTrailer}
+      />
 
       <div
         className="home_screen__banner"
@@ -60,8 +61,7 @@ const HomeScreen = () => {
             style={{ display: "flex", justifyContent: "start", gap: "18px" }}
           >
             <button className="btn-outline" onClick={handleSeeTrailer}>
-              {" "}
-              See Trailer{" "}
+              See Trailer
             </button>
             <button
               className="btn "
@@ -75,11 +75,11 @@ const HomeScreen = () => {
         </div>
       </div>
       <div className="movies_container">
-        <Suspense fallback={<div>Loading...</div>}>
+        {/*<Suspense fallback={<div>Loading...</div>}>
           <RowMovies title={"Trending Now"} fetchUrl={requests.fetchTrending} />
-        </Suspense>
+        </Suspense>*/}
 
-        <Suspense fallback={<div>Loading...</div>}>
+        {/*<Suspense fallback={<div>Loading...</div>}>
           <RowMovies
             title={"Netflix Originals"}
             fetchUrl={requests.fetchNetflixOriginals}
@@ -90,7 +90,7 @@ const HomeScreen = () => {
         </Suspense>
         <Suspense fallback={<div>Loading...</div>}>
           <RowMovies title={"Action"} fetchUrl={requests.fetchActionMovies} />
-        </Suspense>
+        </Suspense>*/}
       </div>
     </div>
   );

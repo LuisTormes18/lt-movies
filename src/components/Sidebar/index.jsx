@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import "./sidebar.css";
@@ -9,14 +10,15 @@ const Sidebar = () => {
   const color = "#f1f1f1";
 
   return (
-    <aside>
-      <nav className="menu">
-        <div className="item">
-          <Link to="/">
-            <FaHome size={size} color={color} />
-          </Link>
-        </div>
-        {/*<div className="item">
+    <>
+      <aside>
+        <nav className="menu">
+          <div className="item">
+            <Link to="/">
+              <FaHome size={size} color={color} />
+            </Link>
+          </div>
+          {/*<div className="item">
           <Link to="/movies">
             <FaVideo size={size} color={color} />
           </Link>
@@ -27,13 +29,14 @@ const Sidebar = () => {
           </Link>
         </div>
         */}
-        <div className="item">
-          <Link to="/">
-            <FaSearch size={size} color={color} />
-          </Link>
-        </div>
-      </nav>
-    </aside>
+          <div className="item">
+            <Link to="/search">
+              <FaSearch size={size} color={color} />
+            </Link>
+          </div>
+        </nav>
+      </aside>
+    </>
   );
 };
 

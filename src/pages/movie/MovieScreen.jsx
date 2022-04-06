@@ -45,7 +45,10 @@ const MovieScreen = () => {
       }}
     >
       {/*Load trailer*/}
-      {videoIdTrailer && <ModalTrailer videoId={videoIdTrailer} />}
+      <ModalTrailer
+        videoId={videoIdTrailer}
+        setVideoIdTrailer={setVideoIdTrailer}
+      />
 
       <div className="poster">
         <img
