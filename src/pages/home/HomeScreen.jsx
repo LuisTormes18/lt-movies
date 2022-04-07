@@ -78,18 +78,21 @@ const HomeScreen = () => {
         <Suspense fallback={<div>Loading...</div>}>
           <RowMovies title={"Trending Now"} fetchUrl={requests.fetchTrending} />
         </Suspense>
-
-        <Suspense fallback={<div>Loading...</div>}>
-          <RowMovies
-            title={"Netflix Originals"}
-            fetchUrl={requests.fetchNetflixOriginals}
-          />
+         <Suspense fallback={<div>Loading...</div>}>
+          <RowMovies title={"Top Rated"} fetchUrl={requests.fetchTopRated} />
         </Suspense>
+
         <Suspense fallback={<div>Loading...</div>}>
           <RowMovies title={"Comedy"} fetchUrl={requests.fetchComedyMovies} />
         </Suspense>
         <Suspense fallback={<div>Loading...</div>}>
+          <RowMovies title={"Horror"} fetchUrl={requests.fetchHorrorMovies} />
+        </Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
           <RowMovies title={"Action"} fetchUrl={requests.fetchActionMovies} />
+        </Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
+          <RowMovies title={"Romance"} fetchUrl={requests.fetchRomanceMovies} />
         </Suspense>
       </div>
     </div>

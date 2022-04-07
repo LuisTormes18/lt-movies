@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import instanceAxios from "./../../../axios";
 
 const useSearch = () => {
+  const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState(null);
   const [results, setResults] = useState(null);
 
@@ -9,18 +10,19 @@ const useSearch = () => {
 
   useEffect(() => {
     if (search) {
+      setLoading(true)
       async function fetchData() {
-        const req = await instanceAxios.get(`/search/movie/${search}?api_key=${api_key}`);
-        setResults(req.data);
-
-        console.log('req.data', req.data)
+        const req = await instanceAxios.get(`/search/movie?api_key=${api_key}&query=${search}`);
+        setResults(req.data.results);
       }
 
       fetchData();
+      setLoading(false);
+
     }
   }, [search]);
 
-  return [results, setSearch];
+  return [results,loading, setSearch];
 };
 
 export default useSearch;

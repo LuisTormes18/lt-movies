@@ -2,7 +2,7 @@
   display: flex;
 
   justify-content: center;
-  align-items: center;
+  
 
   height: 100vh;
 
@@ -10,14 +10,7 @@
 
   background-color: transparent;
 
-  z-index: 500000;
-
-  position: absolute;
-
-  top: 0;
-
-  left: 0;
-  overflow-y: hidden;
+  padding-top: 60px;
 }
 
 h2 {

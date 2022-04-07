@@ -1,13 +1,19 @@
 import { useState, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
+
+import Loading from "./../../components/Loading";
+import PosterMovie from "./../../components/PosterMovie";
 import { useInput, useSearch } from "./hooks";
 
 import "./search.css";
 
 const SearchScreen = () => {
   const [inputState, handleInputChange, reset] = useInput("");
-  const [results, setSearch] = useSearch(null);
+  const [results, loading, setSearch] = useSearch(null);
   const [categorie, setCategorie] = useState(null);
+
+  const base_url = import.meta.env.VITE_IMG_URL;
+
 
   function handleSutmit(e) {
     e.preventDefault();
@@ -48,11 +54,19 @@ const SearchScreen = () => {
           </button>
         </div>
       </header>
-      <div className="movies_container">
-        {results?.map((movie) => (
-          <h2>{movie?.title}</h2>
-        ))}
+
+       {
+          loading ? <Loading /> : (
+
+            <div className="movies_container">
+
+        {
+          results?.map((m) => <PosterMovie key={m.id} movie={m} /> )}
+        
       </div>
+            )
+        }
+      
     </div>
   );
 };
