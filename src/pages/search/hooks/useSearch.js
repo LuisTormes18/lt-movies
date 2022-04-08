@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import instanceAxios from "./../../../axios";
+
+import { instanceAxios, formattedMovies } from "./../../../utils";
 
 const useSearch = () => {
   const [loading, setLoading] = useState(false);
@@ -15,7 +16,7 @@ const useSearch = () => {
         const req = await instanceAxios.get(
           `/search/movie?api_key=${api_key}&query=${search}`
         );
-        setResults(req.data.results);
+        setResults(formattedMovies(req.data.results));
       }
 
       fetchData();
