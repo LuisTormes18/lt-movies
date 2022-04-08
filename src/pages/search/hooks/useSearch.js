@@ -10,19 +10,20 @@ const useSearch = () => {
 
   useEffect(() => {
     if (search) {
-      setLoading(true)
+      setLoading(true);
       async function fetchData() {
-        const req = await instanceAxios.get(`/search/movie?api_key=${api_key}&query=${search}`);
+        const req = await instanceAxios.get(
+          `/search/movie?api_key=${api_key}&query=${search}`
+        );
         setResults(req.data.results);
       }
 
       fetchData();
       setLoading(false);
-
     }
   }, [search]);
 
-  return [results,loading, setSearch];
+  return [results, loading, setSearch];
 };
 
 export default useSearch;

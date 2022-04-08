@@ -14,7 +14,6 @@ const SearchScreen = () => {
 
   const base_url = import.meta.env.VITE_IMG_URL;
 
-
   function handleSutmit(e) {
     e.preventDefault();
 
@@ -55,18 +54,15 @@ const SearchScreen = () => {
         </div>
       </header>
 
-       {
-          loading ? <Loading /> : (
-
-            <div className="movies_container">
-
-        {
-          results?.map((m) => <PosterMovie key={m.id} movie={m} /> )}
-        
-      </div>
-            )
-        }
-      
+      {loading ? (
+        <Loading />
+      ) : (
+        <div className="movies_container">
+          {results?.map((m) => (
+            <PosterMovie key={m.id} movie={m} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

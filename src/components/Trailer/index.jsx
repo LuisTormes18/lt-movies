@@ -2,9 +2,7 @@ import { useState, useEffect } from "react";
 import YouTube from "react-youtube";
 import Modal from "react-modal";
 
-const ModalTrailer = ({ videoId, setVideoIdTrailer }) => {
-  const [modalIsOpen, setIsOpen] = useState(false);
-
+const ModalTrailer = ({ videoId, modalIsOpen, setIsOpen }) => {
   useEffect(() => {
     if (videoId || videoId === undefined) {
       setIsOpen(true);
@@ -40,7 +38,6 @@ const ModalTrailer = ({ videoId, setVideoIdTrailer }) => {
 
   function closeModal() {
     setIsOpen(false);
-    setVideoIdTrailer(null);
   }
 
   return (

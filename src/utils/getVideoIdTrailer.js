@@ -1,4 +1,4 @@
-import instanceAxios from "./../axios";
+import instanceAxios from "./axios";
 
 export const getVideoIdTrailer = async (movieId) => {
   const api_key = import.meta.env.VITE_API_KEY;

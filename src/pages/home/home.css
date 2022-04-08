@@ -23,21 +23,18 @@
   font-size: 0.8em;
   display: block;
   padding: 20px 0;
-
 }
 
-@media(max-width: 600px){
-.home_screen__banner {
-
-  height: 100vh;
-}
+@media (max-width: 600px) {
+  .home_screen__banner {
+    height: 100vh;
+  }
   .banner__text {
-  color: #f1f1f1;
-  padding: 60px 5%;
-  padding-top: 50%;
-  width: 100%;
-
-}
+    color: #f1f1f1;
+    padding: 60px 5%;
+    padding-top: 50%;
+    width: 100%;
+  }
 }
 
 .movies_container {
