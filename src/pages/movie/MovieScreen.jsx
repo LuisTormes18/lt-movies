@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import Rating from "../../components/rating/Rating";
 import ModalTrailer from "./../../components/Trailer";
-import { instanceAxios, formattedMovies } from "./../../utils";
+import { instanceAxios, formatMovie } from "./../../utils";
 
 import "./movie.css";
 
@@ -16,11 +16,10 @@ const MovieScreen = () => {
   useEffect(() => {
     async function fetchData() {
       const api_key = import.meta.env.VITE_API_KEY;
-
       const req = await instanceAxios.get(`/movie/${id}?api_key=${api_key}`);
       console.log(req.data);
 
-      setMovie(formattedMovies([req.data])[0]);
+      setMovie(formatMovie(req.data));
     }
 
     fetchData();

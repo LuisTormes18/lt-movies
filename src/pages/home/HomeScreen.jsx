@@ -22,9 +22,12 @@ const HomeScreen = () => {
     fetchData();
   }, []);
 
-  const handleSeeTrailer = () => {
+  function handleSeeTrailer() {
     setIsOpen(true);
-  };
+  }
+  function handleSeeDetails() {
+    navigate(`/movie/${movie.id}`);
+  }
 
   return (
     <div className="home_screen">
@@ -49,12 +52,7 @@ const HomeScreen = () => {
             <button className="btn-outline" onClick={handleSeeTrailer}>
               See Trailer
             </button>
-            <button
-              className="btn "
-              onClick={() => {
-                navigate(`/movie/${movie?.id}`);
-              }}
-            >
+            <button className="btn " onClick={handleSeeDetails}>
               See Details
             </button>
           </div>

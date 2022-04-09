@@ -1,7 +1,7 @@
 import { getVideoIdTrailer } from "./getVideoIdTrailer";
 import instanceAxios from "./axios";
 import requests from "./requests";
-import formattedMovies from "./formattedMovies";
+import { formattedMovies, formatMovie } from "./formattedMovies";
 import randomMovie from "./randomMovie";
 
 export {
@@ -10,4 +10,5 @@ export {
   requests,
   formattedMovies,
   randomMovie,
+  formatMovie,
 };

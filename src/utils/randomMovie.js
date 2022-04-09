@@ -1,10 +1,10 @@
-import formattedMovies from "./formattedMovies";
+import { formatMovie } from "./formattedMovies";
 
 const randomMovie = async (movies) => {
   const movie = movies[Math.floor(Math.random() * movies.length - 1)];
-  const formatMovie = formattedMovies([movie]);
+  const newMovie = formatMovie(movie);
 
-  return formatMovie[0];
+  return newMovie;
 };
 
 export default randomMovie;
