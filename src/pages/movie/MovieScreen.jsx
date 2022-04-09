@@ -17,9 +17,9 @@ const MovieScreen = () => {
     async function fetchData() {
       const api_key = import.meta.env.VITE_API_KEY;
       const req = await instanceAxios.get(`/movie/${id}?api_key=${api_key}`);
-      console.log(req.data);
-
       setMovie(formatMovie(req.data));
+
+
     }
 
     fetchData();

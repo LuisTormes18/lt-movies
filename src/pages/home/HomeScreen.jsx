@@ -1,12 +1,12 @@
-import React, { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import RowMovies  from "../../components/RowMovies";
 import ModalTrailer from "./../../components/Trailer";
 import { instanceAxios, requests, randomMovie } from "./../../utils";
 
 import "./home.css";
 
-const RowMovies = React.lazy(() => import("../../components/RowMovies"));
 
 const HomeScreen = () => {
   const [movie, setMovie] = useState(null);
@@ -16,7 +16,8 @@ const HomeScreen = () => {
   useEffect(() => {
     async function fetchData() {
       const req = await instanceAxios.get(requests.fetchTrending);
-      setMovie(randomMovie(req.data.results));
+      const rmovie = await randomMovie(req.data.results)
+      setMovie(rmovie);
     }
 
     fetchData();
@@ -59,25 +60,16 @@ const HomeScreen = () => {
         </div>
       </div>
       <div className="movies_container">
-        <Suspense fallback={<div>Loading...</div>}>
           <RowMovies title={"Trending Now"} fetchUrl={requests.fetchTrending} />
-        </Suspense>
-        <Suspense fallback={<div>Loading...</div>}>
+          {
+          /*
           <RowMovies title={"Top Rated"} fetchUrl={requests.fetchTopRated} />
-        </Suspense>
-
-        <Suspense fallback={<div>Loading...</div>}>
           <RowMovies title={"Comedy"} fetchUrl={requests.fetchComedyMovies} />
-        </Suspense>
-        <Suspense fallback={<div>Loading...</div>}>
           <RowMovies title={"Horror"} fetchUrl={requests.fetchHorrorMovies} />
-        </Suspense>
-        <Suspense fallback={<div>Loading...</div>}>
           <RowMovies title={"Action"} fetchUrl={requests.fetchActionMovies} />
-        </Suspense>
-        <Suspense fallback={<div>Loading...</div>}>
           <RowMovies title={"Romance"} fetchUrl={requests.fetchRomanceMovies} />
-        </Suspense>
+      		*/
+  		  }
       </div>
     </div>
   );

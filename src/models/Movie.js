@@ -10,28 +10,9 @@ export class Movie {
       number: movie.number_of_seasons || null,
       episodes: movie.number_of_episodes,
     };
-    this.genres = this.mapGenres(movie.genres);
     this.id = movie.id;
-    this.trailerId = this.getVideoIdTrailer(movie.id);
-  }
-  getVideoIdTrailer = async function (movieId) {
-    const api_key = import.meta.env.VITE_API_KEY;
-
-    try {
-      const req = await instanceAxios.get(
-        `/movie/${movieId}/videos?api_key=${api_key}`
-      );
-
-      return req?.data?.results[0]?.key || undefined;
-    } catch (err) {
-      return undefined;
-    }
-  };
-
-  mapGenres = function (genres) {
-    return this.genres.map((g) => g.name);
-  };
-  Get = function () {
+   }
+    Get = function () {
     return {
       title: this.title,
       overview: this.overview,
@@ -40,7 +21,6 @@ export class Movie {
       seasons: this.seasons,
       genres: this.genres,
       id: this.id,
-      trailerId: this.trailerId,
     };
   };
 }
