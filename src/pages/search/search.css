@@ -36,7 +36,7 @@
   color: rgba(158, 158, 158, 1);
 }
 
-.navbar__categories {
+.navbar__previus-search {
   display: flex;
   gap: 10px;
   justify-content: center;
@@ -53,8 +53,6 @@
 .movies_container {
   padding: 40px 20px;
   background-color: rgba(18, 18, 18, 0.7);
-
   display: flex;
-
   flex-wrap: wrap;
 }

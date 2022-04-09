@@ -3,11 +3,11 @@ import YouTube from "react-youtube";
 import Modal from "react-modal";
 
 const ModalTrailer = ({ videoId, modalIsOpen, setIsOpen }) => {
-  useEffect(() => {
-    if (videoId || videoId === undefined) {
-      setIsOpen(true);
-    }
-  }, [videoId]);
+  // useEffect(() => {
+  //   if (videoId || videoId === undefined) {
+  //     setIsOpen(true);
+  //   }
+  // }, [videoId]);
 
   const opts = {
     height: "400",
@@ -44,6 +44,7 @@ const ModalTrailer = ({ videoId, modalIsOpen, setIsOpen }) => {
     <Modal
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
+      ariaHideApp={false}
       style={customStyles}
       contentLabel="Container Modal"
     >
@@ -51,8 +52,7 @@ const ModalTrailer = ({ videoId, modalIsOpen, setIsOpen }) => {
         <div
           style={{ color: "white", display: "flex", justifyContent: "center" }}
         >
-          {" "}
-          <h2> Not Trailer! </h2>{" "}
+          <h2> Not Trailer! </h2>
         </div>
       )}
       {videoId && <YouTube videoId={videoId} opts={opts} />}
