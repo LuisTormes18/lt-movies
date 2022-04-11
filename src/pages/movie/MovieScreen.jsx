@@ -1,12 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 
-import { Rating, Trailer } from "../../components/";
+import { Rating, ModalContainer } from "../../components/";
+import { appContext } from "../../context/contextProvider";
 import { instanceAxios, formatMovie } from "./../../utils";
 
 import "./movie.css";
 
 const MovieScreen = () => {
+  const { handleSeeTrailer } = useContext(appContext);
   const [movie, setMovie] = useState(null);
 
   let { id } = useParams();
@@ -32,7 +34,13 @@ const MovieScreen = () => {
         <div className="poster">
           <img src={movie?.posterUrl} alt={movie?.title} />
           <br />
-          <button className="btn-outline" type="button">
+          <button
+            className="btn-outline"
+            type="button"
+            onClick={() => {
+              handleSeeTrailer(movie?.id);
+            }}
+          >
             See trailer...
           </button>
         </div>
@@ -53,11 +61,14 @@ const MovieScreen = () => {
           <p>{movie?.overview}</p>
 
           <div className="details">
-            <p>Genres:movies?.genres</p>
+            <p>
+              Genres:{" "}
+              <span>{movie?.genres.map(({ name }) => `${name}, `)}</span>{" "}
+            </p>
           </div>
         </div>
       </div>
-      <Trailer videoId={id} />
+      <ModalContainer />
     </div>
   );
 };

@@ -40,4 +40,6 @@
 .movies_container {
   padding: 40px 20px;
   background-color: rgba(18, 18, 18, 0.7);
+
+  overflow-x: hidden;
 }

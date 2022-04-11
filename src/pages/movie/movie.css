@@ -4,23 +4,25 @@ p {
 }
 
 .movie-screen {
-
-  min-height: 100vh;
-  max-height: 100vh;
   overflow-y: hidden;
   overflow-x: hidden;
-
 }
-.hero{
+.hero {
+  position: relative;
+  min-height: 100vh;
+  max-height: 100vh;
+  height: auto;
   padding: 40px;
   display: flex;
 
   background-size: cover;
   background-position: top center;
+
+  overflow-y: hidden;
 }
 .poster {
   margin-right: 20px;
-  height: 100vh;
+  height: 100%;
 }
 .poster .btn-outline {
   margin-top: 10px;
@@ -39,6 +41,7 @@ img {
   /*background-color: red;*/
   width: 60%;
   padding-top: 40px;
+  height: auto;
 }
 .texts h1 {
   font-size: 2.5em;
@@ -64,6 +67,4 @@ img {
   font-weight: lighter;
 }
 
-
 /* Trailer youtube */
-

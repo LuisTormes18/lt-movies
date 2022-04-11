@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
 import YouTube from "react-youtube";
 
+import "./trailer.css";
+
 const Trailer = ({ videoId }) => {
-  const [activeTrailer, setActiveTrailer] = useState({});
-  const [trailers, setTrailers] = useState([]);
   const opts = {
     height: "400",
     width: "100%",
@@ -11,30 +10,17 @@ const Trailer = ({ videoId }) => {
       autoplay: 1,
     },
   };
-  useEffect(() => {
-    async function fetchData() {
-      const api_key = import.meta.env.VITE_API_KEY;
-
-      const resp = await instanceAxios.get(
-        `/movie/${videoId}/videos?api_key=${api_key}`
-      );
-      const active = resp.data.results.pop();
-      setActiveTrailer(active);
-      setTrailers(resp.data.results);
-    }
-    fetchData();
-  }, [videoId]);
-
+  function onReady(event) {
+    event.target.pauseVideo();
+  }
   return (
-    <div className="container">
-      <div className="trailer_active">
-        <YouTube videoId={activeTrailer?.key} opts={opts} />
-      </div>
-      <div className="trailers_container">
-        {trailers?.map((t) => (
-          <h2 key={t?.key}>{t?.key}</h2>
-        ))}
-      </div>
+    <div className="container-trailer">
+      <YouTube
+        videoId={videoId}
+        opts={opts}
+        onReady={onReady}
+        containerClassName="embed embed-youtube"
+      />
     </div>
   );
 };
