@@ -17,7 +17,8 @@ const MovieScreen = () => {
   useEffect(() => {
     async function fetchData() {
       const api_key = import.meta.env.VITE_API_KEY;
-      const req = await instanceAxios.get(
+      const req = awaiimport truncateString from './../../utils/truncateString';
+t instanceAxios.get(
         `/${media_type}/${id}?api_key=${api_key}`
       );
       setMovie({ ...formatMovie(req.data), media_type });
@@ -54,7 +55,7 @@ const MovieScreen = () => {
 
           <RatingMovie {...movie} />
 
-          <p>{movie?.overview}</p>
+          <p>{truncateString(movie?.overview,160)}</p>
 
           <div className="details">
             {movie?.seasons?.number && (
