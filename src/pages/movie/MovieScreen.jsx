@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import { RatingMovie, ModalContainer } from "../../components/";
 import { appContext } from "../../context/contextProvider";
-import { instanceAxios, formatMovie } from "./../../utils";
+import { instanceAxios, formatMovie, truncateString } from "./../../utils";
 
 import "./movie.css";
 
@@ -17,8 +17,7 @@ const MovieScreen = () => {
   useEffect(() => {
     async function fetchData() {
       const api_key = import.meta.env.VITE_API_KEY;
-      const req = awaiimport truncateString from './../../utils/truncateString';
-t instanceAxios.get(
+      const req = await instanceAxios.get(
         `/${media_type}/${id}?api_key=${api_key}`
       );
       setMovie({ ...formatMovie(req.data), media_type });
@@ -55,7 +54,7 @@ t instanceAxios.get(
 
           <RatingMovie {...movie} />
 
-          <p>{truncateString(movie?.overview,160)}</p>
+          <p>{truncateString(movie?.overview, 160)}</p>
 
           <div className="details">
             {movie?.seasons?.number && (

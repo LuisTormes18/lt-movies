@@ -84,6 +84,9 @@ img {
   padding-top: 40px;
   width: 100%;
   }
+  .texts h1{
+    font-size: 1.7em;
+  }
   
   img{
     display: none;
