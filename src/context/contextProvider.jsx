@@ -1,5 +1,6 @@
 import { useState, createContext, useMemo } from "react";
 import { instanceAxios } from "./../utils";
+
 export const appContext = createContext();
 
 const ContextProvider = ({ children }) => {
@@ -9,7 +10,7 @@ const ContextProvider = ({ children }) => {
 
   function handleSeeTrailer(movieId) {
     const api_key = import.meta.env.VITE_API_KEY;
-     instanceAxios
+    instanceAxios
       .get(`/movie/${movieId}/videos?api_key=${api_key}`)
       .then((resp) => {
         const active = resp.data.results.pop();
