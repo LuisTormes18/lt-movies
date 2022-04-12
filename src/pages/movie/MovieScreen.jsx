@@ -11,13 +11,17 @@ const MovieScreen = () => {
   const { handleSeeTrailer } = useContext(appContext);
   const [movie, setMovie] = useState(null);
 
-  let { id } = useParams();
+  let { media } = useParams();
+  let [media_type, id] = media.split("-");
 
   useEffect(() => {
     async function fetchData() {
       const api_key = import.meta.env.VITE_API_KEY;
-      const req = await instanceAxios.get(`/movie/${id}?api_key=${api_key}`);
-      setMovie(formatMovie(req.data));
+      const req = await instanceAxios.get(
+        `/${media_type}/${id}?api_key=${api_key}`
+      );
+      setMovie({ ...formatMovie(req.data), media_type });
+      console.log(movie);
     }
 
     fetchData();
@@ -38,7 +42,7 @@ const MovieScreen = () => {
             className="btn-outline"
             type="button"
             onClick={() => {
-              handleSeeTrailer(movie?.id);
+              handleSeeTrailer(movie?.id, movie?.media_type);
             }}
           >
             See trailer...
@@ -50,17 +54,20 @@ const MovieScreen = () => {
 
           <RatingMovie {...movie} />
 
-          {movie?.seasons?.number && (
-            <div>
-              <span>Seasons: movie?.seasons?.number </span>
-
-              <span>Episodes: movie?.seasons?.episodes </span>
-            </div>
-          )}
-
           <p>{movie?.overview}</p>
 
           <div className="details">
+            {movie?.seasons?.number && (
+              <div className="seasons">
+                <p>
+                  Seasons: <span>{movie?.seasons?.number}</span>{" "}
+                </p>
+
+                <p>
+                  Episodes: <span>{movie?.seasons?.episodes}</span>{" "}
+                </p>
+              </div>
+            )}
             <p>
               Genres:{" "}
               <span>{movie?.genres.map(({ name }) => `${name}, `)}</span>{" "}

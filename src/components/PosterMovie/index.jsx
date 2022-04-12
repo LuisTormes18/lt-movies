@@ -6,7 +6,7 @@ const PosterMovie = ({ movie }) => {
   const navigate = useNavigate();
 
   function handleClickPosterMovie() {
-    navigate(`/movie/${movie.id}`);
+    navigate(`/movie/${movie.media_type}-${movie.id}`);
   }
   return (
     <div className="poster_movie" onClick={handleClickPosterMovie}>

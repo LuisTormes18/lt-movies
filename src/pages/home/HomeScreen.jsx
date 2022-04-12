@@ -27,7 +27,7 @@ const HomeScreen = () => {
   }, []);
 
   function handleSeeDetails() {
-    navigate(`/movie/${movie.id}`);
+    navigate(`/movie/${movie.media_type}-${movie.id}`);
   }
 
   return (
@@ -47,7 +47,7 @@ const HomeScreen = () => {
             <button
               className="btn-outline"
               onClick={() => {
-                handleSeeTrailer(movie?.id);
+                handleSeeTrailer(movie?.id, movie?.media_type);
               }}
             >
               See Trailer
@@ -60,13 +60,12 @@ const HomeScreen = () => {
       </div>
       <div className="movies_container">
         <RowMovies title={"Trending Now"} fetchUrl={requests.fetchTrending} />
-        
-          <RowMovies title={"Top Rated"} fetchUrl={requests.fetchTopRated} />
-          <RowMovies title={"Comedy"} fetchUrl={requests.fetchComedyMovies} />
-          <RowMovies title={"Horror"} fetchUrl={requests.fetchHorrorMovies} />
-          <RowMovies title={"Action"} fetchUrl={requests.fetchActionMovies} />
-          <RowMovies title={"Romance"} fetchUrl={requests.fetchRomanceMovies} />
-      		
+
+        <RowMovies title={"Top Rated"} fetchUrl={requests.fetchTopRated} />
+        <RowMovies title={"Comedy"} fetchUrl={requests.fetchComedyMovies} />
+        <RowMovies title={"Horror"} fetchUrl={requests.fetchHorrorMovies} />
+        <RowMovies title={"Action"} fetchUrl={requests.fetchActionMovies} />
+        <RowMovies title={"Romance"} fetchUrl={requests.fetchRomanceMovies} />
       </div>
 
       <ModalContainer />
