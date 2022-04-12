@@ -11,11 +11,11 @@ const RatingMovie = ({ percentage, vote_count, star_rating }) => {
         <CircularProgressbar value={percentage} text={`${percentage}%`} />
       </div>
       <div>
-        <div className="stars">
+        {/* <div className="stars">
           {star_rating !== undefined && (
             <Rating value={`${star_rating}`} readonly />
           )}
-        </div>
+        </div> */}
         <span>- votes: {vote_count} -</span>
       </div>
     </div>
