@@ -1,5 +1,8 @@
 .row {
   height: auto;
+  min-height: 300px;
+  width: 100%;
+
 }
 .row-title {
   color: white;
@@ -12,6 +15,9 @@ div.posters_container {
 }
 div.posters_container::-webkit-scrollbar {
   display: none;
+ /* padding: 20px;
+  background-color: red;*/
+  /*visibility: hidden;*/
 }
 div.poster_movie {
   cursor: pointer;

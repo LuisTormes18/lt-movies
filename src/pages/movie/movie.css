@@ -23,11 +23,11 @@ p {
   overflow-x: hidden;
 }
 
-.poster {
+.hero .poster {
   margin-right: 20px;
   height: 100%;
 }
-.poster .btn-outline {
+.hero .poster .btn-outline {
   margin-top: 10px;
   width: 100%;
   padding: 15px;
@@ -88,10 +88,10 @@ img {
     font-size: 1.7em;
   }
   
-  img{
+  .hero .poster img{
     display: none;
   }
-  .poster{
+  .hero .poster {
   width: 100%;
     
   }
