@@ -59,14 +59,14 @@ const HomeScreen = () => {
         </div>
       </div>
       <div className="movies_container">
-        {/*<RowMovies title={"Trending Now"} fetchUrl={requests.fetchTrending} />*/}
-        {/*
+        <RowMovies title={"Trending Now"} fetchUrl={requests.fetchTrending} />
+        
           <RowMovies title={"Top Rated"} fetchUrl={requests.fetchTopRated} />
           <RowMovies title={"Comedy"} fetchUrl={requests.fetchComedyMovies} />
           <RowMovies title={"Horror"} fetchUrl={requests.fetchHorrorMovies} />
           <RowMovies title={"Action"} fetchUrl={requests.fetchActionMovies} />
           <RowMovies title={"Romance"} fetchUrl={requests.fetchRomanceMovies} />
-      		*/}
+      		
       </div>
 
       <ModalContainer />

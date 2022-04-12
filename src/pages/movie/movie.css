@@ -14,12 +14,15 @@ p {
   height: auto;
   padding: 40px;
   display: flex;
+  align-items: center;
 
   background-size: cover;
   background-position: top center;
 
   overflow-y: hidden;
+  overflow-x: hidden;
 }
+
 .poster {
   margin-right: 20px;
   height: 100%;
@@ -40,7 +43,6 @@ img {
 .texts {
   /*background-color: red;*/
   width: 60%;
-  padding-top: 40px;
   height: auto;
 }
 .texts h1 {
@@ -67,4 +69,25 @@ img {
   font-weight: lighter;
 }
 
-/* Trailer youtube */
+@media(max-width: 650px){
+  .hero{
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    justify-content: flex-end;
+  }
+  .texts{
+  padding-top: 40px;
+  width: 100%;
+  }
+  
+  img{
+    display: none;
+  }
+  .poster{
+  width: 100%;
+    
+  }
+  .poster .btn-outline {
+  width: 70%;
+}
+}

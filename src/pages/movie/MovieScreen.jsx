@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 
-import { Rating, ModalContainer } from "../../components/";
+import { RatingMovie, ModalContainer } from "../../components/";
 import { appContext } from "../../context/contextProvider";
 import { instanceAxios, formatMovie } from "./../../utils";
 
@@ -48,7 +48,7 @@ const MovieScreen = () => {
         <div className="texts">
           <h1>{movie?.title}</h1>
 
-          <Rating {...movie} />
+          <RatingMovie {...movie} />
 
           {movie?.seasons?.number && (
             <div>

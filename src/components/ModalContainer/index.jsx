@@ -7,7 +7,7 @@ import Trailer from "./../Trailer";
 import { appContext } from "../../context/contextProvider";
 
 const ModalContainer = () => {
-  const { modalIsOpen, setModalOpen, trailerId } = useContext(appContext);
+  const { modalIsOpen, setModalOpen, trailerId, loading } = useContext(appContext);
   const customStyles = {
     content: {
       top: "50%",
@@ -39,7 +39,8 @@ const ModalContainer = () => {
       style={customStyles}
       contentLabel="Container Modal"
     >
-      <Trailer videoId={trailerId} />
+      
+    {loading ? <h2>Loading...</h2> : <Trailer videoId={trailerId} />}
     </Modal>
   );
 };

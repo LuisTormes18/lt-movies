@@ -1,20 +1,29 @@
 import { CircularProgressbar } from "react-circular-progressbar";
-import { Rating as Stars } from "react-star-rating-lite";
-
+import Rating from "react-star-rating-lite";
 import "react-circular-progressbar/dist/styles.css";
 
-const Rating = ({ percentage, vote_count, star_rating }) => {
+import './rating.css';
+
+const RatingMovie = ({ percentage, vote_count, star_rating }) => {
+  console.log('star_rating', star_rating)
+
   return (
-    <div style={{ display: "flex", paddingBottom: "20px" }}>
-      <div style={{ width: 50, height: 50 }}>
+    <div className="rating">
+      <div className="circular-bar"  style={{ width: 50, height: 50 }}>
         <CircularProgressbar value={percentage} text={`${percentage}%`} />
       </div>
       <div>
-        <Stars name="read-only" value={star_rating} readOnly />
-        <span>(votes: {vote_count})</span>
+      <div className="stars">
+
+        
+      { star_rating !== undefined && <Rating value={`${Math.floor(star_rating)}`} readonly />}
+
+      </div>
+        <span>- votes: {vote_count} -</span>
+      
       </div>
     </div>
   );
 };
 
-export default Rating;
+export default RatingMovie;
