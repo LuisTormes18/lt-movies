@@ -1,10 +1,14 @@
-import { useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import PosterMovie from "./../PosterMovie";
+// import PosterMovie from "./../PosterMovie";
+import LazyLoad from "./../LazyLoad";
+
 import { formattedMovies, instanceAxios } from "./../../utils";
 
 import "./index.css";
+
+const PosterMovie = lazy(() => import("./../PosterMovie"));
 
 const RowMovies = ({ title, fetchUrl }) => {
   console.log(title);
@@ -29,7 +33,11 @@ const RowMovies = ({ title, fetchUrl }) => {
 
       <div className="posters_container">
         {movies.map((m) => (
-          <PosterMovie key={m.id} movie={m} />
+          <LazyLoad>
+            <Suspense fallback={<Loading />}>
+              <PosterMovie key={m.id} movie={m} />
+            </Suspense>
+          </LazyLoad>
         ))}
       </div>
     </div>
