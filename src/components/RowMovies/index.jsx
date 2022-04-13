@@ -1,20 +1,21 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+// import {useObserver} from "./../hooks"
 import PosterMovie from "./../PosterMovie";
 import { formattedMovies, instanceAxios } from "./../../utils";
 
 import "./index.css";
 
 const RowMovies = ({ title, fetchUrl }) => {
+  // const [observer, setElements, entries] = useObserver({threshold:0, root:null });
   const [movies, setMovies] = useState([]);
+
   const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {
       const req = await instanceAxios.get(fetchUrl);
-      console.log("Row movies: ", title);
-      console.table(req.data.results);
       setMovies(formattedMovies(req.data.results));
     }
 

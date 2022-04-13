@@ -20,8 +20,8 @@ const HomeScreen = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const req = await instanceAxios.get(requests.fetchTrending);
-      setMovie(randomMovie(req.data.results));
+      const req = await instanceAxios.get(requests.fetchNetflixOriginals);
+      setMovie({ ...randomMovie(req.data.results), media_type: "tv" });
     }
 
     fetchData();
@@ -60,16 +60,17 @@ const HomeScreen = () => {
         </div>
       </div>
       <div className="movies_container">
-        {/*<RowMovies title={"Trending Now"} fetchUrl={requests.fetchTrending} />
-        <RowMovies
+        <RowMovies title={"Trending Now"} fetchUrl={requests.fetchTrending} />
+        {/* <RowMovies
           title={"Netflix Originals"}
           fetchUrl={requests.fetchNetflixOriginals}
-        />
-        <RowMovies title={"Top Rated"} fetchUrl={requests.fetchTopRated} />
+        />*/}
+
+        {/*<RowMovies title={"Top Rated"} fetchUrl={requests.fetchTopRated} />*/}
         <RowMovies title={"Comedy"} fetchUrl={requests.fetchComedyMovies} />
         <RowMovies title={"Horror"} fetchUrl={requests.fetchHorrorMovies} />
         <RowMovies title={"Action"} fetchUrl={requests.fetchActionMovies} />
-        <RowMovies title={"Romance"} fetchUrl={requests.fetchRomanceMovies} />*/}
+        <RowMovies title={"Romance"} fetchUrl={requests.fetchRomanceMovies} />
       </div>
       {modalIsOpen && <ModalContainer />}
     </div>

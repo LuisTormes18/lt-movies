@@ -1,31 +1,35 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 
-import { RatingMovie, ModalContainer } from "../../components/";
-import { appContext } from "../../context/contextProvider";
+import { RatingMovie, ModalContainer, Loading } from "../../components/";
 import { instanceAxios, formatMovie, truncateString } from "./../../utils";
+import { appContext } from "../../context/contextProvider";
 
 import "./movie.css";
 
 const MovieScreen = () => {
   const { handleSeeTrailer, modalIsOpen } = useContext(appContext);
+  const [loading, setLoading] = useState(false);
   const [movie, setMovie] = useState(null);
   let { media } = useParams();
   let [media_type, id] = media.split("-");
 
   useEffect(() => {
+    setLoading(true);
     async function fetchData() {
       const api_key = import.meta.env.VITE_API_KEY;
       const req = await instanceAxios.get(
         `/${media_type}/${id}?api_key=${api_key}`
       );
       setMovie({ ...formatMovie(req.data), media_type });
-      console.log(movie);
+      setLoading(false);
     }
 
     fetchData();
   }, [id]);
-
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <div className="movie-screen">
       <div

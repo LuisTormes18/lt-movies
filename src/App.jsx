@@ -1,11 +1,11 @@
-import {lazy, Suspense } from "react";
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Layout, Loading } from "./components";
 
-import Layout from "./components/Layout/Layout";
 import ContextProvider from "./context/contextProvider";
 
-const HomeScreen = lazy(() => import("./pages/home/HomeScreen")) ;
-const MovieScreen =  lazy(() => import("./pages/movie/MovieScreen"));
+const HomeScreen = lazy(() => import("./pages/home/HomeScreen"));
+const MovieScreen = lazy(() => import("./pages/movie/MovieScreen"));
 const SearchScreen = lazy(() => import("./pages/search/SearchScreen"));
 
 const App = () => {
@@ -13,7 +13,7 @@ const App = () => {
     <BrowserRouter>
       <ContextProvider>
         <Layout>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Loading />}>
             <Routes>
               <Route path="/" element={<HomeScreen />} />
               <Route path="/movie/:media" element={<MovieScreen />} />

@@ -4,6 +4,7 @@ import PosterMovie from "./PosterMovie/index";
 import RowMovies from "./RowMovies/index";
 import Trailer from "./Trailer/index";
 import ModalContainer from "./ModalContainer/index";
+import Layout from "./Layout/Layout";
 
 export {
   RatingMovie,
@@ -12,4 +13,5 @@ export {
   RowMovies,
   Trailer,
   ModalContainer,
+  Layout,
 };
