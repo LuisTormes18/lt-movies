@@ -13,6 +13,8 @@ const RowMovies = ({ title, fetchUrl }) => {
   useEffect(() => {
     async function fetchData() {
       const req = await instanceAxios.get(fetchUrl);
+      console.log("Row movies: ", title);
+      console.table(req.data.results);
       setMovies(formattedMovies(req.data.results));
     }
 

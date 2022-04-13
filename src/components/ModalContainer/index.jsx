@@ -30,6 +30,8 @@ const ModalContainer = () => {
     setModalOpen(false);
   }
 
+  console.log("Se importo el Modal Container...");
+
   return (
     <Modal
       isOpen={modalIsOpen}

@@ -8,7 +8,7 @@ import { instanceAxios, formatMovie, truncateString } from "./../../utils";
 import "./movie.css";
 
 const MovieScreen = () => {
-  const { handleSeeTrailer } = useContext(appContext);
+  const { handleSeeTrailer, modalIsOpen } = useContext(appContext);
   const [movie, setMovie] = useState(null);
 
   let { media } = useParams();
@@ -75,7 +75,7 @@ const MovieScreen = () => {
           </div>
         </div>
       </div>
-      <ModalContainer />
+      {modalIsOpen && <ModalContainer />}
     </div>
   );
 };

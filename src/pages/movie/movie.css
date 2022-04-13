@@ -68,34 +68,32 @@ img {
   color: #f1f1f1;
   font-weight: lighter;
 }
-.seasons{
+.seasons {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  
 }
-@media(max-width: 650px){
-  .hero{
+@media (max-width: 650px) {
+  .hero {
     flex-direction: column-reverse;
     align-items: flex-start;
     justify-content: flex-end;
   }
-  .texts{
-  padding-top: 40px;
-  width: 100%;
+  .texts {
+    padding-top: 40px;
+    width: 100%;
   }
-  .texts h1{
+  .texts h1 {
     font-size: 1.7em;
   }
-  
-  .hero .poster img{
+
+  .hero .poster img {
     display: none;
   }
   .hero .poster {
-  width: 100%;
-    
+    width: 100%;
   }
   .poster .btn-outline {
-  width: 70%;
-}
+    width: 70%;
+  }
 }

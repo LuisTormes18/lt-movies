@@ -5,4 +5,11 @@ import RowMovies from "./RowMovies/index";
 import Trailer from "./Trailer/index";
 import ModalContainer from "./ModalContainer/index";
 
-export { RatingMovie, Loading, PosterMovie, RowMovies, Trailer, ModalContainer };
+export {
+  RatingMovie,
+  Loading,
+  PosterMovie,
+  RowMovies,
+  Trailer,
+  ModalContainer,
+};
