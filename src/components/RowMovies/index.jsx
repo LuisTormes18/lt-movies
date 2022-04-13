@@ -33,11 +33,9 @@ const RowMovies = ({ title, fetchUrl }) => {
 
       <div className="posters_container">
         {movies.map((m) => (
-          <LazyLoad>
-            <Suspense fallback={<Loading />}>
+           <Suspense fallback={<Loading />}>
               <PosterMovie key={m.id} movie={m} />
             </Suspense>
-          </LazyLoad>
         ))}
       </div>
     </div>
