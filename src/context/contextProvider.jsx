@@ -11,13 +11,9 @@ const ContextProvider = ({ children }) => {
 
   function handleSeeTrailer(movieId, media_type) {
     if (movieId === currentMovieId) {
-      console.log("las otras veces ");
-
       setModalOpen(true);
       return;
     }
-
-    console.log("enatra por primera vez ");
 
     setCurrentMovieId(movieId);
 

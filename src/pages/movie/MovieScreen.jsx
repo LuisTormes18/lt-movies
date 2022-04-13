@@ -10,7 +10,6 @@ import "./movie.css";
 const MovieScreen = () => {
   const { handleSeeTrailer, modalIsOpen } = useContext(appContext);
   const [movie, setMovie] = useState(null);
-
   let { media } = useParams();
   let [media_type, id] = media.split("-");
 
