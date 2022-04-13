@@ -1,3 +1,3 @@
-import useObserver from "./useObserver";
+import { useObserver } from "./useObserver";
 
 export { useObserver };

@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-// import {useObserver} from "./../hooks"
 import PosterMovie from "./../PosterMovie";
 import { formattedMovies, instanceAxios } from "./../../utils";
 
 import "./index.css";
 
 const RowMovies = ({ title, fetchUrl }) => {
-  // const [observer, setElements, entries] = useObserver({threshold:0, root:null });
+  console.log(title);
   const [movies, setMovies] = useState([]);
 
   const navigate = useNavigate();
@@ -19,7 +18,9 @@ const RowMovies = ({ title, fetchUrl }) => {
       setMovies(formattedMovies(req.data.results));
     }
 
-    fetchData();
+    if (movies.length <= 0) {
+      fetchData();
+    }
   }, [fetchUrl]);
 
   return (

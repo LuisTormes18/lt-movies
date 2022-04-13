@@ -1,7 +1,7 @@
 import React, { Suspense, useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { RowMovies, ModalContainer } from "../../components";
+import { ModalContainer, LazyLoad, Loading } from "../../components";
 import { appContext } from "../../context/contextProvider";
 import {
   instanceAxios,
@@ -12,6 +12,8 @@ import {
 
 // styles
 import "./home.css";
+
+const RowMovies = React.lazy(() => import("./../../components/RowMovies/"));
 
 const HomeScreen = () => {
   const { handleSeeTrailer, modalIsOpen } = useContext(appContext);
@@ -59,18 +61,43 @@ const HomeScreen = () => {
           </div>
         </div>
       </div>
-      <div className="movies_container">
-        <RowMovies title={"Trending Now"} fetchUrl={requests.fetchTrending} />
-        {/* <RowMovies
-          title={"Netflix Originals"}
-          fetchUrl={requests.fetchNetflixOriginals}
-        />*/}
 
-        {/*<RowMovies title={"Top Rated"} fetchUrl={requests.fetchTopRated} />*/}
-        <RowMovies title={"Comedy"} fetchUrl={requests.fetchComedyMovies} />
-        <RowMovies title={"Horror"} fetchUrl={requests.fetchHorrorMovies} />
-        <RowMovies title={"Action"} fetchUrl={requests.fetchActionMovies} />
-        <RowMovies title={"Romance"} fetchUrl={requests.fetchRomanceMovies} />
+      <div className="movies_container">
+        <LazyLoad>
+          <Suspense fallback={<Loading />}>
+            <RowMovies
+              title={"Trending Now"}
+              fetchUrl={requests.fetchTrending}
+            />
+          </Suspense>
+        </LazyLoad>
+
+        <LazyLoad>
+          <Suspense fallback={<Loading />}>
+            <RowMovies title={"Comedy"} fetchUrl={requests.fetchComedyMovies} />
+          </Suspense>
+        </LazyLoad>
+
+        <LazyLoad>
+          <Suspense fallback={<Loading />}>
+            <RowMovies title={"Horror"} fetchUrl={requests.fetchHorrorMovies} />
+          </Suspense>
+        </LazyLoad>
+
+        <LazyLoad>
+          <Suspense fallback={<Loading />}>
+            <RowMovies title={"Action"} fetchUrl={requests.fetchActionMovies} />
+          </Suspense>
+        </LazyLoad>
+
+        <LazyLoad>
+          <Suspense fallback={<Loading />}>
+            <RowMovies
+              title={"Romance"}
+              fetchUrl={requests.fetchRomanceMovies}
+            />
+          </Suspense>
+        </LazyLoad>
       </div>
       {modalIsOpen && <ModalContainer />}
     </div>

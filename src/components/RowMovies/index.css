@@ -2,6 +2,8 @@
   height: auto;
   min-height: 300px;
   width: 100%;
+
+  padding-bottom: 20px;
 }
 .row-title {
   color: white;

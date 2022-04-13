@@ -1,32 +1,53 @@
 import { useEffect, useState, useRef } from "react";
 
-const useObserver = (options) => {
-  const [elements, setElements] = useState([]);
-  const [entries, setEntries] = useState([]);
-
-  const observer = useRef(
-    new IntersectionObserver((observerEntries) => {
-      console.log(observerEntries);
-      setEntries(observerEntries);
-    }, options)
-  );
+export const useObserver = () => {
+  const [show, setShow] = useState(false);
+  const ref = useRef();
 
   useEffect(() => {
-    const currentObserver = observer.current;
-    currentObserver.disconnect();
+    const onChange = (observerEntries, observer) => {
+      console.log(observerEntries[0].isIntersecting);
 
-    if (elements.length > 0) {
-      elements.forEach((element) => currentObserver.observer(element));
-    }
+      const element = observerEntries[0];
 
-    return () => {
-      if (currentObserver) {
-        currentObserver.disconnect();
+      if (element.isIntersecting) {
+        setShow(true);
+
+        observer.disconnect();
       }
     };
-  }, [elements]);
 
-  return [observer.current, setElements, entries];
+    const observer = new IntersectionObserver(onChange, {
+      root: null,
+      rootMargin: "20px",
+    });
+
+    observer.observe(ref.current);
+
+    return () => observer.disconnect();
+  });
+
+  return [show, ref];
 };
 
-export default useObserver;
+// const [elements, setElements] = useState([]);
+// const [entries, setEntries] = useState([]);
+
+//
+
+// useEffect(() => {
+//   const currentObserver = observer.current;
+//   currentObserver.disconnect();
+
+//   if (elements.length > 0) {
+//     elements.forEach((element) => currentObserver.observer(element));
+//   }
+
+//   return () => {
+//     if (currentObserver) {
+//       currentObserver.disconnect();
+//     }
+//   };
+// }, [elements]);
+
+// return [observer.current, setElements, entries];
