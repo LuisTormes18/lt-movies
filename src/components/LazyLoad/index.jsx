@@ -1,4 +1,4 @@
-import Loading from "./Loading/index";
+import Loading from "./../Loading/index";
 import { useObserver } from "./../../hooks";
 
 export default function LazyLoad({ children }) {

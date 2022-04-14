@@ -71,7 +71,7 @@ const HomeScreen = () => {
             />
           </Suspense>
         </LazyLoad>
-
+{/*
         <LazyLoad>
           <Suspense fallback={<Loading />}>
             <RowMovies title={"Comedy"} fetchUrl={requests.fetchComedyMovies} />
@@ -97,7 +97,7 @@ const HomeScreen = () => {
               fetchUrl={requests.fetchRomanceMovies}
             />
           </Suspense>
-        </LazyLoad>
+        </LazyLoad>*/}
       </div>
       {modalIsOpen && <ModalContainer />}
     </div>

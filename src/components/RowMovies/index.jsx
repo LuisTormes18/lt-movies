@@ -2,8 +2,7 @@ import { Suspense, lazy, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // import PosterMovie from "./../PosterMovie";
-import LazyLoad from "./../LazyLoad";
-
+import Loading from "./../Loading";
 import { formattedMovies, instanceAxios } from "./../../utils";
 
 import "./index.css";
