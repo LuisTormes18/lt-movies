@@ -24,4 +24,4 @@ Si desea ver la demo de este proyecto, puede visitar [https://ltmovies.netlify.a
 * [React](https://es.reactjs.org/) - The web framework used
 * [CSS](https://developer.mozilla.org/es/docs/Web/CSS) - Style Manager
 * [themoviedb](https://developers.themoviedb.org/3/getting-started/introduction) - API
-* [Vitet](https://vitejs.dev//) - The build tool
+* [Vite](https://vitejs.dev//) - The build tool
