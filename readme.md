@@ -17,7 +17,7 @@ yarn install
 
 ## Demo 
 
-Si desea ver la demo de este proyecto, puede visitar [Demo del proyecto](https://ltmovies.netlify.app//)
+Si desea ver la demo de este proyecto, puede visitar [https://ltmovies.netlify.app](https://ltmovies.netlify.app//)
 
 ## Build with 🛠️
 
