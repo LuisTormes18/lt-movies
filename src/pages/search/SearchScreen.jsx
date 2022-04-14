@@ -1,12 +1,10 @@
 import { Suspense, lazy, useState, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 
-import { Loading, LazyLoad } from "./../../components";
+import { PosterMovie } from "../../components";
 import { useInput, useSearch, usePreviusSearch } from "./hooks";
 
 import "./search.css";
-
-const PosterMovie = lazy(() => import("./../../components/PosterMovie"));
 
 const SearchScreen = () => {
   const [inputState, handleInputChange, reset] = useInput("");
@@ -58,11 +56,7 @@ const SearchScreen = () => {
       ) : (
         <div className="movies_container">
           {results?.map((m) => (
-            <LazyLoad>
-              <Suspense fallback={<Loading />}>
-                <PosterMovie key={m.id} movie={m} />
-              </Suspense>
-            </LazyLoad>
+            <PosterMovie key={m.id} movie={m} />
           ))}
         </div>
       )}

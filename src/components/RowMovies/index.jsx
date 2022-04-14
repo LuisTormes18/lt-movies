@@ -20,7 +20,6 @@ const RowMovies = ({ title, fetchUrl }) => {
     }
 
     if (isIntersecting) {
-      console.log("fetchData", title);
       fetchData();
     }
   }, [fetchUrl, isIntersecting]);
