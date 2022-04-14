@@ -1,18 +1,16 @@
 import { Suspense, lazy, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-// import PosterMovie from "./../PosterMovie";
-import Loading from "./../Loading";
+import PosterMovie from "./../PosterMovie";
+// import Loading from "./../Loading";
 import { formattedMovies, instanceAxios } from "./../../utils";
+import { useObserver } from "./../../hooks";
 
 import "./index.css";
 
-const PosterMovie = lazy(() => import("./../PosterMovie"));
-
 const RowMovies = ({ title, fetchUrl }) => {
-  console.log(title);
+  const [isIntersecting, ref] = useObserver();
   const [movies, setMovies] = useState([]);
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,20 +19,19 @@ const RowMovies = ({ title, fetchUrl }) => {
       setMovies(formattedMovies(req.data.results));
     }
 
-    if (movies.length <= 0) {
+    if (isIntersecting) {
+      console.log("fetchData", title);
       fetchData();
     }
-  }, [fetchUrl]);
+  }, [fetchUrl, isIntersecting]);
 
   return (
-    <div className="row">
+    <div ref={ref} className="row">
       <h2 className="row-title">{title}</h2>
 
       <div className="posters_container">
         {movies.map((m) => (
-           <Suspense fallback={<Loading />}>
-              <PosterMovie key={m.id} movie={m} />
-            </Suspense>
+          <PosterMovie key={m.id} movie={m} />
         ))}
       </div>
     </div>

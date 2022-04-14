@@ -2,7 +2,6 @@ div.poster_movie {
   cursor: pointer;
   min-width: 200px;
   max-width: 220px;
-  min-height: 300px;
   margin: 10px;
 
   transition: transform 0.3s;

@@ -1,13 +1,17 @@
 import { useEffect, useState, useRef } from "react";
 
-export const useObserver = () => {
+export const useObserver = (
+  options = {
+    // root:null,
+    // rootMargin:"20px",
+    threshold: 0.2,
+  }
+) => {
   const [show, setShow] = useState(false);
   const ref = useRef();
 
   useEffect(() => {
     const onChange = (observerEntries, observer) => {
-      console.log(observerEntries[0].isIntersecting);
-
       const element = observerEntries[0];
 
       if (element.isIntersecting) {
@@ -17,10 +21,7 @@ export const useObserver = () => {
       }
     };
 
-    const observer = new IntersectionObserver(onChange, {
-      root: null,
-      rootMargin: "20px",
-    });
+    const observer = new IntersectionObserver(onChange, options);
 
     observer.observe(ref.current);
 
@@ -29,25 +30,3 @@ export const useObserver = () => {
 
   return [show, ref];
 };
-
-// const [elements, setElements] = useState([]);
-// const [entries, setEntries] = useState([]);
-
-//
-
-// useEffect(() => {
-//   const currentObserver = observer.current;
-//   currentObserver.disconnect();
-
-//   if (elements.length > 0) {
-//     elements.forEach((element) => currentObserver.observer(element));
-//   }
-
-//   return () => {
-//     if (currentObserver) {
-//       currentObserver.disconnect();
-//     }
-//   };
-// }, [elements]);
-
-// return [observer.current, setElements, entries];

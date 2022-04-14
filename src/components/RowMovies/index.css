@@ -4,6 +4,8 @@
   width: 100%;
 
   padding-bottom: 20px;
+
+  /*background-color: red;*/
 }
 .row-title {
   color: white;
@@ -13,6 +15,8 @@ div.posters_container {
   display: flex;
   overflow-x: scroll;
   overflow-y: hidden;
+
+  /*background-color: yellow;*/
 }
 div.posters_container::-webkit-scrollbar {
   display: none;
