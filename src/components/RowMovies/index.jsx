@@ -1,5 +1,4 @@
-import { Suspense, lazy, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 import PosterMovie from "./../PosterMovie";
 // import Loading from "./../Loading";
@@ -11,7 +10,6 @@ import "./index.css";
 const RowMovies = ({ title, fetchUrl }) => {
   const [isIntersecting, ref] = useObserver();
   const [movies, setMovies] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {
@@ -24,7 +22,7 @@ const RowMovies = ({ title, fetchUrl }) => {
     }
   }, [fetchUrl, isIntersecting]);
 
-  return (
+  return !isIntersecting ? null : (
     <div ref={ref} className="row">
       <h2 className="row-title">{title}</h2>
 

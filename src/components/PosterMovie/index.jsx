@@ -10,7 +10,7 @@ const PosterMovie = ({ movie }) => {
   }
   return (
     <div className="poster_movie" onClick={handleClickPosterMovie}>
-      <img load="lazy" src={movie.posterUrl} alt={movie.title} />
+      <img src={movie.posterUrl} alt={movie.title} loading="lazy" />
     </div>
   );
 };

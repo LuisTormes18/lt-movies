@@ -3,12 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { RowMovies, ModalContainer, Loading } from "../../components";
 import { appContext } from "../../context/contextProvider";
-import {
-  instanceAxios,
-  requests,
-  randomMovie,
-  truncateString,
-} from "./../../utils";
+import { instanceAxios, requests, randomMovie, truncateString } from "./../../utils";
 
 // styles
 import "./home.css";
@@ -23,7 +18,6 @@ const HomeScreen = () => {
       const req = await instanceAxios.get(requests.fetchNetflixOriginals);
       setMovie({ ...randomMovie(req.data.results), media_type: "tv" });
     }
-
     fetchData();
   }, []);
 
@@ -42,9 +36,7 @@ const HomeScreen = () => {
         <div className="banner__text">
           <h1>{movie?.title}</h1>
           <p>{truncateString(movie?.overview, 160)}</p>
-          <div
-            style={{ display: "flex", justifyContent: "start", gap: "18px" }}
-          >
+          <div style={{ display: "flex", justifyContent: "start", gap: "18px" }}>
             <button
               className="btn-outline"
               onClick={() => {
