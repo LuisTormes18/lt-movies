@@ -2,10 +2,7 @@
   height: auto;
   min-height: 300px;
   width: 100%;
-
   padding-bottom: 20px;
-
-  /*background-color: red;*/
 }
 .row-title {
   color: white;
@@ -19,10 +16,10 @@ div.posters_container {
   /*background-color: yellow;*/
 }
 div.posters_container::-webkit-scrollbar {
-  display: none;
+/*  display: none;*/
   /* padding: 20px;
   background-color: red;*/
-  /*visibility: hidden;*/
+  visibility: hidden;
 }
 div.poster_movie {
   cursor: pointer;

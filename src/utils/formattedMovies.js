@@ -8,5 +8,5 @@ export const formatMovie = (movie) => {
 };
 export const formattedMovies = (movies) => {
   const formatMovies = movies.map((movie) => formatMovie(movie));
-  return formatMovies;
+  return formatMovies.slice(0, 10);
 };

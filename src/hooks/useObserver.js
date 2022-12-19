@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from "react";
 export const useObserver = (
   options = {
     // root:null,
-    // rootMargin:"20px",
+    rootMargin:"20px",
     threshold: 0.2,
   }
 ) => {

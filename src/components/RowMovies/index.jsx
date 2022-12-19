@@ -11,6 +11,7 @@ const RowMovies = ({ title, fetchUrl }) => {
   const [isIntersecting, ref] = useObserver();
   const [movies, setMovies] = useState([]);
 
+  console.log("Row, Aparecio la fila de: ", title)
   useEffect(() => {
     async function fetchData() {
       const req = await instanceAxios.get(fetchUrl);
@@ -22,7 +23,7 @@ const RowMovies = ({ title, fetchUrl }) => {
     }
   }, [fetchUrl, isIntersecting]);
 
-  return !isIntersecting ? null : (
+  return (
     <div ref={ref} className="row">
       <h2 className="row-title">{title}</h2>
 

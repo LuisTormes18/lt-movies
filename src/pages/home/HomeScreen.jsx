@@ -56,8 +56,8 @@ const HomeScreen = () => {
         <RowMovies title={"Trending Now"} fetchUrl={requests.fetchTrending} />
         <RowMovies title={"Comedy"} fetchUrl={requests.fetchComedyMovies} />
         <RowMovies title={"Horror"} fetchUrl={requests.fetchHorrorMovies} />
-        <RowMovies title={"Action"} fetchUrl={requests.fetchActionMovies} />
-        <RowMovies title={"Romance"} fetchUrl={requests.fetchRomanceMovies} />
+      {/*  <RowMovies title={"Action"} fetchUrl={requests.fetchActionMovies} />
+        <RowMovies title={"Romance"} fetchUrl={requests.fetchRomanceMovies} />*/}
       </div>
       {modalIsOpen && <ModalContainer />}
     </div>
