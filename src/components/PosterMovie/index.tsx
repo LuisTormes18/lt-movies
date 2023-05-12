@@ -5,7 +5,7 @@ import styles from "./poster.module.css";
 const PosterMovie = ({ movie }: any) => {
   const router = useRouter();
   function handleClickPosterMovie() {
-    router.push(`/movie/${movie.media_type}-${movie.id}`);
+    router.push(`/${movie.media_type}-${movie.id}`);
   }
   return (
     <div className={`${styles.poster_movie}`} onClick={handleClickPosterMovie}>

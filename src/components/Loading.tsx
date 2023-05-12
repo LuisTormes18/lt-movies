@@ -1,22 +1,7 @@
-// .loading {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-
-//   height: 100%;
-//   width: 100%;
-//   background-color: transparent;
-// }
-
-// h2 {
-//   color: white;
-// }
-
 const Loading = (props: any) => {
   return (
-    <div className="loading">
+    <div className="loading flex items-center justify-center w-full h-screen bg-transparent">
       <div>
-        {" "}
         <svg width={38} height={38} xmlns="http://www.w3.org/2000/svg" stroke="#fff" {...props}>
           <g transform="translate(1 1)" strokeWidth={2} fill="none" fillRule="evenodd">
             <circle strokeOpacity={0.5} cx={18} cy={18} r={18} />

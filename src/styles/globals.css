@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 /* layout styles */
 ._layout {
@@ -26,6 +27,7 @@ code {
   padding: 0;
   box-sizing: border-box;
   /*  border: 1px solid red;*/
+  font-family: "Poppins", sans-serif;
 }
 html,
 body {
@@ -153,6 +155,7 @@ body {
   gap: 10px;
   justify-content: center;
   flex-wrap: wrap;
+  align-items: center;
 }
 .btn-categories {
   cursor: pointer;
@@ -160,7 +163,7 @@ body {
   background-color: rgba(118, 118, 118, 0.5);
   color: white;
   border-radius: 28px;
-  padding: 10px 20px;
+  padding: 5px 30px;
 }
 .movies_container {
   padding: 40px 20px;
@@ -168,4 +171,103 @@ body {
   display: flex;
   flex-wrap: wrap;
 }
-/* row movies container */
+/* movies screen */
+.movie-screen h1,
+p {
+  color: #f1f1f1;
+}
+
+.movie-screen {
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+.hero {
+  position: relative;
+  min-height: 100vh;
+  max-height: 100vh;
+  height: auto;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+
+  background-size: cover;
+  background-position: top center;
+
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.hero .poster {
+  margin-right: 20px;
+  height: 100%;
+}
+.hero .poster .btn-outline {
+  margin-top: 10px;
+  width: 100%;
+  padding: 15px;
+  /*background-color: rgba(18, 18, 18, .9);*/
+}
+/* img {
+  max-width: 300px;
+  width: 100%;
+  max-height: 400px;
+  width: 100%;
+} */
+
+.texts {
+  /*background-color: red;*/
+  width: 60%;
+  height: auto;
+}
+.texts h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+.texts > p {
+  margin: 10px 0;
+  color: white;
+
+  font-size: 1em;
+  padding-bottom: 20px;
+}
+
+.texts span {
+  color: white;
+}
+.details p {
+  color: lightblue;
+  font-weight: bold;
+}
+.details span {
+  color: #f1f1f1;
+  font-weight: lighter;
+}
+.seasons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+@media (max-width: 650px) {
+  .hero {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    justify-content: flex-end;
+  }
+  .texts {
+    padding-top: 40px;
+    width: 100%;
+  }
+  .texts h1 {
+    font-size: 1.7em;
+  }
+
+  .hero .poster img {
+    display: none;
+  }
+  .hero .poster {
+    width: 100%;
+  }
+  .poster .btn-outline {
+    width: 70%;
+  }
+}
