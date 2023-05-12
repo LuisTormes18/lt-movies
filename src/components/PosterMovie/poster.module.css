@@ -1,0 +1,13 @@
+.poster_movie {
+  cursor: pointer;
+  min-width: 220px;
+  width: 220px;
+  height: 350px;
+  margin: 10px;
+  transition: transform 0.3s;
+  position: relative;
+  /* border: 1px solid red; */
+}
+.poster_movie:hover {
+  transform: scale(1.08);
+}
