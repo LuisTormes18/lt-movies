@@ -8,7 +8,7 @@ import PosterMovie from "../PosterMovie";
 import styles from "./row.module.css";
 
 const RowMovies = ({ title, fetchUrl }: any) => {
-  const [isIntersecting, ref] = useObserver();
+  const { show: isIntersecting, ref } = useObserver();
   const [movies, setMovies] = useState([]);
 
   console.log("Row, Aparecio la fila de: ", title);

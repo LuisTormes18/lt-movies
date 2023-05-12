@@ -8,7 +8,7 @@ export const useObserver = (
   }
 ) => {
   const [show, setShow] = useState(false);
-  const ref = useRef<any>();
+  const ref = useRef<HTMLDivElement | any>(null);
 
   useEffect(() => {
     const onChange = (observerEntries: any, observer: any) => {
@@ -28,5 +28,5 @@ export const useObserver = (
     return () => observer.disconnect();
   });
 
-  return [show, ref];
+  return { show, ref };
 };
