@@ -6,7 +6,7 @@ import "react-circular-progressbar/dist/styles.css";
 //   display: none;
 // }
 
-const RatingMovie = ({ percentage, vote_count, star_rating }: any) => {
+export const Rating = ({ movie: { percentage, vote_count, star_rating } }: any) => {
   return (
     <div className="flex items-center gap-10 pb-3">
       <div className="circular-bar" style={{ width: 50, height: 50 }}>
@@ -18,5 +18,3 @@ const RatingMovie = ({ percentage, vote_count, star_rating }: any) => {
     </div>
   );
 };
-
-export default RatingMovie;

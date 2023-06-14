@@ -55,7 +55,7 @@ const SearchScreen = () => {
 
       <div className="movies_container">
         {loading ? <div className="text-center text-[1.2em]">Loading...</div> : null}
-        {results.length <= 0 && <div className="text-center text-[1.5em]">Not Results</div>}
+        {results?.length <= 0 && <div className="text-center text-[1.5em]">Not Results</div>}
         {results?.map((m) => (
           <PosterMovie key={m.id} movie={m} />
         ))}
